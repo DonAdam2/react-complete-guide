@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import './App.css';
+import classObj from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
     state = {
         persons: [
-            {id: 'adf3',name: 'Max', age: 28},
-            {id: 'dfg4',name: 'Manu', age: 29},
-            {id: 'fgh6',name: 'stephanie', age: 26}
+            {id: 'adf3', name: 'Max', age: 28},
+            {id: 'dfg4', name: 'Manu', age: 29},
+            {id: 'fgh6', name: 'stephanie', age: 26}
         ],
         showPersons: false
     };
@@ -42,15 +42,9 @@ class App extends Component {
     };
 
     render() {
-        const style = {
-            backgroundColor: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer'
-        };
-
         let persons = null;
+
+        let btnClass = '';
 
         if (this.state.showPersons) {
             persons = (
@@ -65,15 +59,25 @@ class App extends Component {
                     )}
                 </div>
             );
+            btnClass = classObj.Red;
+        }
+
+        const classes = [];
+
+        if (this.state.persons.length <= 2) {
+            classes.push(classObj.red);
+        }
+        if (this.state.persons.length <= 1) {
+            classes.push(classObj.bold);
         }
 
         return (
-            <div className="App">
-                <h1>Hi, i'm a React App</h1>
-                <p>This is really working!</p>
-                <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons</button>
-                {persons}
-            </div>
+                <div className={classObj.App}>
+                    <h1>Hi, i'm a React App</h1>
+                    <p className={classes.join(' ')}>This is really working!</p>
+                    <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons</button>
+                    {persons}
+                </div>
         );
     }
 }

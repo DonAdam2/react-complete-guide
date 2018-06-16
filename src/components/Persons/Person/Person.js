@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import classObj from './Person.css';
 import WithClass from '../../../hoc/WithClass';
-import Aux from '../../../hoc/Aux';
+import Aux from '../../../hoc/Auxilary';
 
 class Person extends Component{
     constructor(props) {
